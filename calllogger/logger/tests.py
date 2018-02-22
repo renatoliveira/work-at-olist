@@ -11,4 +11,4 @@ class CallTestCase(TestCase):
             source='123 456 789',
             destination='123 456 780'
         )
-        self.assertNotEqual(0, CallStart.objects.count())
+        self.assertEqual(1, CallStart.objects.count())
