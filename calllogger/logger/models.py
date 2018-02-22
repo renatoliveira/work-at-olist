@@ -11,6 +11,11 @@ class Call(models.Model):
         super().save(*args, **kwargs)
         CallStart.objects.create(call=self)
 
+    def end_call(self):
+        end = CallEnd.objects.filter(call=self.id)
+        if not end:
+            CallEnd.objects.create(call=self)
+
 
 class CallStart(models.Model):
     call = models.ForeignKey('Call', on_delete=models.CASCADE)
